@@ -4,7 +4,9 @@
     "name": "Caio Rodrigues Fernandes",
     "url": "https://github.com/rfcaio"
   },
-  "dependencies": {},
+  "dependencies": {
+    "webpack-merge": "4.2.2"
+  },
   "description": "A webpack configuration generator for my projects.",
   "devDependencies": {
     "coveralls": "3.0.6",
