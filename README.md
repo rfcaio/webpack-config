@@ -7,3 +7,21 @@
 ```
 $ npm install --save @rfcaio/webpack-config
 ```
+
+## Usage
+
+```js
+const config = require('@rfcaio/webpack-config')
+```
+
+## API
+
+**devServer**
+
+Generates a configuration for `webpack-dev-server`.
+
+```js
+config.devServer() // { stats: 'errors-only' }
+
+config.devServer({ port: 1337, stats: 'verbose' }) // { port: 1337, stats: 'verbose' }
+```
