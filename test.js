@@ -1,7 +1,7 @@
 const config = require('.')
 
 describe('devServer', () => {
-  test('should return a default setting when no parameters are passed', () => {
+  test('should return default settings for `webpack-dev-server` when no options are passed', () => {
     expect(config.devServer()).toEqual({
       devServer: {
         stats: 'errors-only'
@@ -9,7 +9,7 @@ describe('devServer', () => {
     })
   })
 
-  test('should return a setting merged with the options object passed as parameter', () => {
+  test('should merge options with default settings', () => {
     const options = {
       historyApiFallback: true,
       port: 1337
@@ -23,7 +23,7 @@ describe('devServer', () => {
     })
   })
 
-  test('should override default setting', () => {
+  test('should override default settings', () => {
     const options = {
       port: 1337,
       stats: 'verbose'
