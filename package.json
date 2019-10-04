@@ -5,6 +5,8 @@
     "url": "https://github.com/rfcaio"
   },
   "dependencies": {
+    "html-webpack-plugin": "3.2.0",
+    "webpack": "4.41.0",
     "webpack-merge": "4.2.2"
   },
   "description": "A webpack configuration generator for my projects.",

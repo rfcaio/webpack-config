@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 
 exports.devServer = (options = {}) => ({
@@ -7,4 +8,10 @@ exports.devServer = (options = {}) => ({
     },
     options
   )
+})
+
+exports.useHtmlPlugin = (options = {}) => ({
+  plugins: [
+    new HtmlWebpackPlugin(merge({ template: 'src/index.html' }, options))
+  ]
 })
