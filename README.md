@@ -26,6 +26,15 @@ config.devServer() // { stats: 'errors-only' }
 config.devServer({ port: 1337, stats: 'verbose' }) // { port: 1337, stats: 'verbose' }
 ```
 
+**loadCSS**
+
+Generates a configuration to load CSS files.
+
+```js
+config.loadCSS() // { module: { rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }] }
+}
+```
+
 **useHtmlPlugin**
 
 Generates a configuration for `html-webpack-plugin`.

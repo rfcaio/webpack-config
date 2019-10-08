@@ -37,6 +37,21 @@ describe('devServer', () => {
   })
 })
 
+describe('loadCSS', () => {
+  test('should return default settings to load css when no options are passed', () => {
+    expect(config.loadCSS()).toEqual({
+      module: {
+        rules: [
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+          }
+        ]
+      }
+    })
+  })
+})
+
 describe('useHtmlPlugin', () => {
   test('should return default settings for `html-webpack-plugin` when no options are passed', () => {
     expect(config.useHtmlPlugin()).toMatchObject({

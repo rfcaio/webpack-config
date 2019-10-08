@@ -10,6 +10,17 @@ exports.devServer = (options = {}) => ({
   )
 })
 
+exports.loadCSS = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+})
+
 exports.useHtmlPlugin = (options = {}) => ({
   plugins: [
     new HtmlWebpackPlugin(merge({ template: 'src/index.html' }, options))
