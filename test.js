@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const config = require('.')
 
 describe('devServer', () => {
@@ -37,8 +39,28 @@ describe('devServer', () => {
   })
 })
 
+describe('extractCSS', () => {
+  test('should return default settings to extract CSS files when no options are passed', () => {
+    expect(config.extractCSS()).toMatchObject({
+      module: { rules: expect.any(Array) },
+      plugins: expect.any(Array)
+    })
+    expect(config.extractCSS().module.rules).toEqual([
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ])
+    const [miniCssExtractPluginObject] = config.extractCSS().plugins
+    expect(miniCssExtractPluginObject.options).toHaveProperty(
+      'filename',
+      '[name].css'
+    )
+  })
+})
+
 describe('loadCSS', () => {
-  test('should return default settings to load css when no options are passed', () => {
+  test('should return default settings to load CSS files when no options are passed', () => {
     expect(config.loadCSS()).toEqual({
       module: {
         rules: [

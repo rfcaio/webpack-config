@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 exports.devServer = (options = {}) => ({
   devServer: merge(
@@ -8,6 +9,22 @@ exports.devServer = (options = {}) => ({
     },
     options
   )
+})
+
+exports.extractCSS = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ]
 })
 
 exports.loadCSS = () => ({

@@ -26,6 +26,31 @@ config.devServer() // { stats: 'errors-only' }
 config.devServer({ port: 1337, stats: 'verbose' }) // { port: 1337, stats: 'verbose' }
 ```
 
+**extractCSS**
+
+Generates a configuration to extract CSS files. Useful for production builds.
+
+```js
+config.extractCSS()
+/*
+{
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ]
+}
+*/
+```
+
 **loadCSS**
 
 Generates a configuration to load CSS files.
