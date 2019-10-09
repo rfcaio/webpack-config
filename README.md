@@ -5,13 +5,37 @@
 ## Install
 
 ```
-$ npm install --save @rfcaio/webpack-config
+$ npm install --save-dev @rfcaio/webpack-config
 ```
 
 ## Usage
 
+Install `webpack-merge` to manage configuration parts.
+
+```
+$ npm install --save-dev webpack-merge
+```
+
+Create a `webpack` configuration file.
+
 ```js
+// webpack.prod.js
+const merge = require('webpack-merge')
 const config = require('@rfcaio/webpack-config')
+
+module.exports = merge([
+  config.extractCSS(),
+  config.useHtmlPlugin(),
+  {
+    mode: 'production'
+  }
+])
+```
+
+Use configuration via `webpack`.
+
+```
+$ npx webpack --config webpack.prod.js
 ```
 
 ## API
