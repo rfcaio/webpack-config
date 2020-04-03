@@ -116,7 +116,7 @@ config.loadCSS()
 Generates a configuration for `error-overlay-webpack-plugin`.
 
 ```js
-config.useHtmlPlugin()
+config.useErrorOverlayPlugin()
 /*
 {
   plugins: [new ErrorOverlayWebpackPlugin()]
