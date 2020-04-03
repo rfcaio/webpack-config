@@ -1,8 +1,10 @@
+const ErrorOverlayWebpackPlugin = require('error-overlay-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = require('.')
 
+jest.mock('error-overlay-webpack-plugin')
 jest.mock('html-webpack-plugin')
 jest.mock('mini-css-extract-plugin')
 
@@ -72,6 +74,13 @@ describe('loadCSS', () => {
         ]
       }
     })
+  })
+})
+
+describe('useErrorOverlayPlugin', () => {
+  test('return default settings', () => {
+    config.useErrorOverlayPlugin()
+    expect(ErrorOverlayWebpackPlugin).toHaveBeenCalled()
   })
 })
 

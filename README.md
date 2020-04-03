@@ -83,6 +83,19 @@ Generates a configuration to load CSS files.
 config.loadCSS() // { module: { rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }] } }
 ```
 
+**useErrorOverlayPlugin**
+
+Generates a configuration for `error-overlay-webpack-plugin`.
+
+```js
+config.useHtmlPlugin()
+/*
+{
+  plugins: [new ErrorOverlayWebpackPlugin()]
+}
+*/
+```
+
 **useHtmlPlugin**
 
 Generates a configuration for `html-webpack-plugin`.
