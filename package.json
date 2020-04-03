@@ -1,4 +1,7 @@
 {
+  "name": "@rfcaio/webpack-config",
+  "version": "0.4.1",
+  "description": "A webpack configuration generator for my projects.",
   "author": {
     "email": "rfcaio90@gmail.com",
     "name": "Caio Rodrigues Fernandes",
@@ -12,7 +15,6 @@
     "webpack": "4.41.0",
     "webpack-merge": "4.2.2"
   },
-  "description": "A webpack configuration generator for my projects.",
   "devDependencies": {
     "coveralls": "3.0.6",
     "eslint": "6.4.0",
@@ -38,7 +40,6 @@
     }
   },
   "license": "MIT",
-  "name": "@rfcaio/webpack-config",
   "repository": {
     "type": "git",
     "url": "https://github.com/rfcaio/webpack-config.git"
@@ -46,6 +47,5 @@
   "scripts": {
     "lint": "eslint *.js",
     "test": "jest --coverage"
-  },
-  "version": "0.4.1"
+  }
 }
