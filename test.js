@@ -1,9 +1,13 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = require('.')
 
+jest.mock('html-webpack-plugin')
+jest.mock('mini-css-extract-plugin')
+
 describe('devServer', () => {
-  test('should return default settings for `webpack-dev-server` when no options are passed', () => {
+  test('return default settings when no options are passed', () => {
     expect(config.devServer()).toEqual({
       devServer: {
         stats: 'errors-only'
@@ -11,7 +15,7 @@ describe('devServer', () => {
     })
   })
 
-  test('should merge options with default settings', () => {
+  test('merge options with default settings', () => {
     const options = {
       historyApiFallback: true,
       port: 1337
@@ -25,7 +29,7 @@ describe('devServer', () => {
     })
   })
 
-  test('should override default settings', () => {
+  test('override default settings', () => {
     const options = {
       port: 1337,
       stats: 'verbose'
@@ -40,27 +44,24 @@ describe('devServer', () => {
 })
 
 describe('extractCSS', () => {
-  test('should return default settings to extract CSS files when no options are passed', () => {
-    expect(config.extractCSS()).toMatchObject({
-      module: { rules: expect.any(Array) },
-      plugins: expect.any(Array)
-    })
-    expect(config.extractCSS().module.rules).toEqual([
+  test('return default settings when no options are passed', () => {
+    const {
+      module: { rules }
+    } = config.extractCSS()
+    expect(rules).toEqual([
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ])
-    const [miniCssExtractPluginObject] = config.extractCSS().plugins
-    expect(miniCssExtractPluginObject.options).toHaveProperty(
-      'filename',
-      '[name].css'
-    )
+    expect(MiniCssExtractPlugin).toHaveBeenCalledWith({
+      filename: '[name].css'
+    })
   })
 })
 
 describe('loadCSS', () => {
-  test('should return default settings to load CSS files when no options are passed', () => {
+  test('return default settings when no options are passed', () => {
     expect(config.loadCSS()).toEqual({
       module: {
         rules: [
@@ -75,33 +76,26 @@ describe('loadCSS', () => {
 })
 
 describe('useHtmlPlugin', () => {
-  test('should return default settings for `html-webpack-plugin` when no options are passed', () => {
-    expect(config.useHtmlPlugin()).toMatchObject({
-      plugins: expect.any(Array)
+  test('return default settings when no options are passed', () => {
+    config.useHtmlPlugin()
+    expect(HtmlWebpackPlugin).toHaveBeenCalledWith({
+      template: 'src/index.html'
     })
-    const [htmlWebpackPluginSetting] = config.useHtmlPlugin().plugins
-    expect(htmlWebpackPluginSetting.options).toHaveProperty(
-      'template',
-      'src/index.html'
-    )
   })
 
-  test('should merge options with default settings', () => {
-    const [htmlWebpackPluginSetting] = config.useHtmlPlugin({
-      minify: true
-    }).plugins
-    const { options } = htmlWebpackPluginSetting
-    expect(options).toHaveProperty('template', 'src/index.html')
-    expect(options).toHaveProperty('minify', true)
+  test('merge options with default settings', () => {
+    config.useHtmlPlugin({ minify: true })
+    expect(HtmlWebpackPlugin).toHaveBeenCalledWith({
+      minify: true,
+      template: 'src/index.html'
+    })
   })
 
-  test('should override default settings', () => {
-    const [htmlWebpackPluginSetting] = config.useHtmlPlugin({
+  test('override default settings', () => {
+    config.useHtmlPlugin({ minify: true, template: 'src/main.html' })
+    expect(HtmlWebpackPlugin).toHaveBeenCalledWith({
       minify: true,
       template: 'src/main.html'
-    }).plugins
-    const { options } = htmlWebpackPluginSetting
-    expect(options).toHaveProperty('template', 'src/main.html')
-    expect(options).toHaveProperty('minify', true)
+    })
   })
 })
