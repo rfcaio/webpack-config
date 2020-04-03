@@ -10,6 +10,12 @@ $ npm install --save-dev @rfcaio/webpack-config
 
 ## Usage
 
+Install `webpack` and the rest of dependencies.
+
+```
+$ npm install --save-dev webpack webpack-cli webpack-dev-server
+```
+
 Install `webpack-merge` to manage configuration parts.
 
 ```
@@ -45,9 +51,20 @@ $ npx webpack --config webpack.prod.js
 Generates a configuration for `webpack-dev-server`.
 
 ```js
-config.devServer() // { stats: 'errors-only' }
+config.devServer()
+/*
+{
+  stats: 'errors-only'
+}
+*/
 
-config.devServer({ port: 1337, stats: 'verbose' }) // { port: 1337, stats: 'verbose' }
+config.devServer({ port: 1337, stats: 'verbose' })
+/*
+{
+  port: 1337,
+  stats: 'verbose'
+}
+*/
 ```
 
 **extractCSS**
@@ -80,7 +97,18 @@ config.extractCSS()
 Generates a configuration to load CSS files.
 
 ```js
-config.loadCSS() // { module: { rules: [{ test: /\.css$/, use: ['style-loader', 'css-loader'] }] } }
+config.loadCSS()
+/*
+{
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+}
 ```
 
 **useErrorOverlayPlugin**
@@ -101,7 +129,18 @@ config.useHtmlPlugin()
 Generates a configuration for `html-webpack-plugin`.
 
 ```js
-config.useHtmlPlugin() // { template: 'src/index.html' }
+config.useHtmlPlugin()
+/*
+{
+  template: 'src/index.html'
+}
+*/
 
-config.useHtmlPlugin({ minify: true, template: 'src/main.html' }) // { minify: true, template: 'src/main.html' }
+config.useHtmlPlugin({ minify: true, template: 'src/main.html' })
+/*
+{
+  minify: true,
+  template: 'src/main.html'
+}
+*/
 ```
