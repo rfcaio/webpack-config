@@ -111,6 +111,40 @@ config.loadCSS()
 }
 ```
 
+**loadJavaScript**
+
+Generates a configuration to load JavaScript files.
+
+```js
+config.loadJavaScript()
+/*
+{
+  module: {
+    rules: [
+      {
+        exclude: /node_modules/,
+        test: /.js$/,
+        use: ['babel-loader']
+      }
+    ]
+  }
+}
+```
+
+For now, you have to setup `babel` too.
+
+```
+$ npm install --save-dev @babel/core @babel/preset-env babel-loader
+```
+
+Then, create `.babelrc` file.
+
+```
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
 **useErrorOverlayPlugin**
 
 Generates a configuration for `error-overlay-webpack-plugin`.

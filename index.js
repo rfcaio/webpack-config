@@ -39,6 +39,18 @@ exports.loadCSS = () => ({
   }
 })
 
+exports.loadJavaScript = () => ({
+  module: {
+    rules: [
+      {
+        exclude: /node_modules/,
+        test: /.js$/,
+        use: ['babel-loader']
+      }
+    ]
+  }
+})
+
 exports.useErrorOverlayPlugin = () => ({
   plugins: [new ErrorOverlayWebpackPlugin()]
 })

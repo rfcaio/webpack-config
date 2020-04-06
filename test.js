@@ -46,7 +46,7 @@ describe('devServer', () => {
 })
 
 describe('extractCSS', () => {
-  test('return default settings when no options are passed', () => {
+  test('return default settings', () => {
     const {
       module: { rules }
     } = config.extractCSS()
@@ -63,13 +63,29 @@ describe('extractCSS', () => {
 })
 
 describe('loadCSS', () => {
-  test('return default settings when no options are passed', () => {
+  test('return default settings', () => {
     expect(config.loadCSS()).toEqual({
       module: {
         rules: [
           {
             test: /\.css$/,
             use: ['style-loader', 'css-loader']
+          }
+        ]
+      }
+    })
+  })
+})
+
+describe('loadJavaScript', () => {
+  test('return default settings', () => {
+    expect(config.loadJavaScript()).toEqual({
+      module: {
+        rules: [
+          {
+            exclude: /node_modules/,
+            test: /.js$/,
+            use: ['babel-loader']
           }
         ]
       }
