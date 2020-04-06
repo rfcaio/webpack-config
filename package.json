@@ -1,6 +1,6 @@
 {
   "name": "@rfcaio/webpack-config",
-  "version": "0.4.1",
+  "version": "0.6.0",
   "description": "A webpack configuration generator for my projects.",
   "author": {
     "email": "rfcaio90@gmail.com",
