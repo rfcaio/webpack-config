@@ -46,7 +46,7 @@ $ npx webpack --config webpack.prod.js
 
 ## API
 
-**devServer**
+### devServer
 
 Generates a configuration for `webpack-dev-server`.
 
@@ -67,7 +67,7 @@ config.devServer({ port: 1337, stats: 'verbose' })
 */
 ```
 
-**extractCSS**
+### extractCSS
 
 Generates a configuration to extract CSS files. Useful for production builds.
 
@@ -92,7 +92,7 @@ config.extractCSS()
 */
 ```
 
-**loadCSS**
+### loadCSS
 
 Generates a configuration to load CSS files.
 
@@ -109,9 +109,10 @@ config.loadCSS()
     ]
   }
 }
+*/
 ```
 
-**loadJavaScript**
+### loadJavaScript
 
 Generates a configuration to load JavaScript files.
 
@@ -129,6 +130,7 @@ config.loadJavaScript()
     ]
   }
 }
+*/
 ```
 
 For now, you have to setup `babel` too.
@@ -145,7 +147,7 @@ Then, create `.babelrc` file.
 }
 ```
 
-**useErrorOverlayPlugin**
+### useErrorOverlayPlugin
 
 Generates a configuration for `error-overlay-webpack-plugin`.
 
@@ -158,7 +160,7 @@ config.useErrorOverlayPlugin()
 */
 ```
 
-**useHtmlPlugin**
+### useHtmlPlugin
 
 Generates a configuration for `html-webpack-plugin`.
 
